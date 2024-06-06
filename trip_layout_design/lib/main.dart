@@ -19,10 +19,11 @@ class _HomePageState extends State<HomePage> {
   List<String> titles = ["CAMERA", "CHAIR", "LAMP", "BEAUTYFUL GIRL"];
 
   String description =
+      // ignore: prefer_interpolation_to_compose_strings, prefer_adjacent_string_concatenation
       "Lorem ipsum dolor sit amet consectetur adipisicing elit." +
-          "Non corporis quas voluptatum illum ipsa odit corrupti quibusdam " +
-          "vel molestiae nostrum, voluptates veritatis animi. Nisi asperiores " +
-          "delectus, tenetur quia ut eligendi!";
+      "Non corporis quas voluptatum illum ipsa odit corrupti quibusdam " +
+      "vel molestiae nostrum, voluptates veritatis animi. Nisi asperiores " +
+      "delectus, tenetur quia ut eligendi!";
 
   @override
   void initState() {
