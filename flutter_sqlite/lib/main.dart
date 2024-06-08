@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_sqlite/db/sqlite.db.dart';
 import 'package:flutter_sqlite/models/user.dart';
