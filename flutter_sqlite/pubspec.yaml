@@ -9,6 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  logging: ^1.2.0
+  path: ^1.9.0
+  sqflite: ^2.3.3+1
+  sqflite_common_ffi: ^2.3.3
+  sqflite_common_ffi_web: '>=0.1.0-dev.1'
 
 dev_dependencies:
   flutter_test:

@@ -1,20 +1,28 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_sqlite/db/sqlite.db.dart';
+import 'package:flutter_sqlite/models/user.dart';
+import 'package:flutter_sqlite/repositories/user.dart';
+import 'package:flutter_sqlite/services/user.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+Future<void> main() async {
+  // Open Sqlite connection
+  final sqlite = SQLiteDatabase();
+  await sqlite.sqliteConn();
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  // Dependency Injection
+  final db = sqlite.getDatabase();
+  final userRepo = UserRepositoryImpl(db);
+  final userService = UserService(userRepo);
+  userService.addUser(User('ok', 'nguyen van khoi', DateTime.now().toString()));
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
+  final record = await db.rawQuery("SELECT * FROM user");
+  for (int i = 0; i < record.length; i++) {
+    debugPrint("user: ${record[i]}");
   }
+
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+  ));
 }

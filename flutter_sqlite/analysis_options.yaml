@@ -1,1 +1,6 @@
 include: package:flutter_lints/flutter.yaml
+linter:
+  rules:
+    # Ignore these specific rules
+    prefer_interpolation_to_compose_strings: false
+    prefer_adjacent_string_concatenation: false
