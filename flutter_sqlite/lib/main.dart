@@ -10,6 +10,8 @@ Future<void> main() async {
   // Open Sqlite connection
   final sqlite = SQLiteDatabase();
   await sqlite.sqliteConn();
+  await sqlite.initTables();
+  // await sqlite.dropTables();
 
   // Dependency Injection
   final db = sqlite.getDatabase();

@@ -25,13 +25,18 @@ class SQLiteDatabase with Logging, SchemaDB {
       var record = await _db.rawQuery("select sqlite_version()");
       var version = record.first.values.first;
       logging('CONNECT DATABASE SUCCESSFULLY - DB VERSION $version');
-      initUserTable();
     } catch (e) {
       logging('EXCEPTION: $e');
     }
   }
 
   Database getDatabase() => _db;
+
+  Future<void> initTables() async {
+    initUserTable();
+
+    /* The rest table want to init */
+  }
 
   Future<void> initUserTable() async {
     try {
@@ -40,6 +45,12 @@ class SQLiteDatabase with Logging, SchemaDB {
     } catch (e) {
       logging('EXCEPTION: $e');
     }
+  }
+
+  Future<void> dropTables() async {
+    dropUserTable();
+    
+    /* The rest table want to drop */
   }
 
   Future<void> dropUserTable() async {
